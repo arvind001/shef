@@ -1,0 +1,12 @@
+.list-item__container:hover {
+  background-color: #d3d3d3;
+}
+
+.list-item__container {
+  height: 30px;
+}
+
+.list-item__text {
+  padding: 2% 15px;
+  text-align: start;
+}

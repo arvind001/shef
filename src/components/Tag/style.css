@@ -1,0 +1,7 @@
+.tag__container {
+  background-color: aqua;
+  margin: 5px 5px;
+  padding: 8px;
+  min-width: 200px;
+  justify-content: space-between;
+}

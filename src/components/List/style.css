@@ -1,0 +1,8 @@
+.list__container {
+  position: absolute;
+  /* min-height: 150px; */
+  background-color: white;
+  min-width: 220px;
+  width: max-content;
+  box-shadow: -2px -2px 4px #f5f5f5, 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
