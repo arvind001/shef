@@ -1,5 +1,6 @@
 .list-item__container:hover {
   background-color: #d3d3d3;
+  cursor: pointer;
 }
 
 .list-item__container {

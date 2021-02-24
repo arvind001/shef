@@ -1,7 +1,16 @@
 .tag__container {
-  background-color: aqua;
-  margin: 5px 5px;
+  background-color: #ec2144;
+  margin: 3px 3px;
   padding: 8px;
   min-width: 200px;
   justify-content: space-between;
+  border-radius: 3px;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.remove {
+  cursor: pointer;
+  margin-left: 20px;
 }

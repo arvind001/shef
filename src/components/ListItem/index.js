@@ -5,7 +5,7 @@ export default function ListItem(props) {
   return (
     <div
       className="list-item__container"
-      onClick={() => props.onClickItem(props.value)}
+      onClick={(e) => props.onClickItem(e, props.value)}
     >
       <div className="list-item__text">{props.value}</div>
     </div>

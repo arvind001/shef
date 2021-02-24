@@ -1,8 +1,11 @@
 .autocomplete__container {
-  padding: 10px;
+  padding: 8px;
   border: 1px solid black;
   border-radius: 5px;
-  min-width: 200px;
-  min-height: 20px;
+  min-height: 40px;
   flex-wrap: wrap;
+  min-width: 300px;
+  width: max-content;
+  max-width: 100%;
+  align-items: center;
 }

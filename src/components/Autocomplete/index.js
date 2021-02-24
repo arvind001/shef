@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tag from "../Tag/index";
 import InputList from "../InputList/index";
-import { buildTrie } from "../../utils/data-structure";
+import { buildTrie } from "../../utils/buildTrie";
 import { spices } from "../../constants/spices";
 import cloneDeep from "lodash/cloneDeep";
 import "./style.css";
@@ -15,17 +15,14 @@ export default function Autocomplete(props) {
     setSpicesTrie(trie);
   }, []);
 
-  const addTag = (tag) => {
-    console.log("this is the tag", tag);
-
+  const addTag = (event, tag) => {
     var newTags = cloneDeep(tags);
     newTags.push(tag);
-    console.log("new tags", newTags);
     setTags(newTags);
+    event.stopPropagation();
   };
 
   const removeTag = (tag) => {
-    console.log("removing tag", tag);
     var newTags = cloneDeep(tags);
     const index = newTags.indexOf(tag);
     if (index > -1) {
@@ -33,10 +30,6 @@ export default function Autocomplete(props) {
       setTags(newTags);
     }
   };
-
-  useEffect(() => {
-    console.log("what are the tags", tags);
-  }, [tags]);
 
   return (
     <div className="autocomplete__container row">
@@ -46,7 +39,7 @@ export default function Autocomplete(props) {
       {tags.map((el) => {
         return <Tag value={el} removeTag={removeTag} />;
       })}
-      <div className="input__container">
+      <div className="input__container col">
         <InputList
           type="text"
           suggestions={spicesTrie}

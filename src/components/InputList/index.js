@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import List from "../List/index";
+import useComponentVisibility from "../../hooks/useComponentVisibility";
 import isNil from "lodash/isNil";
 import "./style.css";
 
 export default function InputList(props) {
-  const [listOpen, setListOpen] = useState(false);
+  // const [listOpen, setListOpen] = useState(false);
   const [input, setInput] = useState("");
   const [items, setItems] = useState([]);
+  var {
+    ref,
+    isComponentVisible,
+    setIsComponentVisible,
+  } = useComponentVisibility(true);
 
   const onFocus = () => {
-    setListOpen(true);
-  };
-
-  const onBlur = () => {
-    setListOpen(false);
+    setIsComponentVisible(true);
   };
 
   const onChange = (event) => {
@@ -36,18 +38,31 @@ export default function InputList(props) {
     setItems(suggestions.values);
   };
 
+  const allItemsinTags = () => {
+    for (var i = 0; i < items.length; i++) {
+      if (!props.tags.includes(items[i])) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   const onKeyDown = (event) => {
     console.log("keyCode", event.keyCode);
     if (event.keyCode === 13) {
+      if (allItemsinTags()) {
+        props.addTag(event, input);
+        return;
+      }
       if (items.length > 0) {
         for (var i = 0; i < items.length; i++) {
           if (!props.tags.includes(items[i])) {
-            props.addTag(items[i]);
+            props.addTag(event, items[i]);
             break;
           }
         }
       } else {
-        props.addTag(input);
+        props.addTag(event, input);
       }
       console.log("input");
     } else if (event.keyCode === 8) {
@@ -63,19 +78,18 @@ export default function InputList(props) {
   };
 
   return (
-    <div className="inputlist__container">
+    <div className="input-list__container" ref={ref}>
       <input
         className="input"
         type={props.type}
         onFocus={onFocus}
-        onBlur={onBlur}
         value={input}
         onChange={onChange}
         placeholder={props.placeholder}
         onKeyDown={onKeyDown}
       />
       {console.log("listes", items)}
-      {input !== "" && (
+      {isComponentVisible && input !== "" && (
         <List
           tags={props.tags}
           list={items}

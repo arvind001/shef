@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ListItem from "../ListItem/index";
 import "./style.css";
 
 export default function List(props) {
-  console.log("props", props);
   var count = 0;
   return (
     <div className="list__container col">

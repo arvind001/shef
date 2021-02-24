@@ -1,7 +1,15 @@
-.inputlist__container {
+.input-list__container {
   position: relative;
+  margin: 6px 0px;
+  margin-left: 16px;
 }
 
 .input {
   border-style: unset;
+  font-size: 16px;
+}
+
+.input:focus {
+  border-style: unset;
+  outline: unset;
 }
