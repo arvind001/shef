@@ -52,17 +52,20 @@ export default function InputList(props) {
     if (event.keyCode === 13) {
       if (allItemsinTags()) {
         props.addTag(event, input);
+        setInput("");
         return;
       }
       if (items.length > 0) {
         for (var i = 0; i < items.length; i++) {
           if (!props.tags.includes(items[i])) {
             props.addTag(event, items[i]);
+            setInput("");
             break;
           }
         }
       } else {
         props.addTag(event, input);
+        setInput("");
       }
       console.log("input");
     } else if (event.keyCode === 8) {
@@ -95,6 +98,7 @@ export default function InputList(props) {
           list={items}
           input={input}
           onClickItem={props.addTag}
+          setInput={setInput}
         />
       )}
     </div>
